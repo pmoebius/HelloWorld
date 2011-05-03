@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>"Twitter"</title>
 </head>
+<script src="http://code.jquery.com/jquery-1.6.js"></script>
  <script type="text/javascript">
   	function getXMLObject() {
   	  	var xmlHttp = false;

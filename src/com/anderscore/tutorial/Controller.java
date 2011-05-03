@@ -18,12 +18,12 @@ public class Controller extends HttpServlet {
 	private static String DELETE_JSP = "/Delete.jsp";
 	private static String EDIT_JSP = "/Edit.jsp";
 	private static String SHOWALL_JSP = "/ShowAll.jsp";
-	private static List<String> msg = new ArrayList<String>();
+	private static List<String> messages = new ArrayList<String>();
 	public static String myString = "justAtest";
 
 	public Controller() {
-		msg.add("Hallo");
-		msg.add("Welt");
+		messages.add("Hallo");
+		messages.add("Welt");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,8 +31,15 @@ public class Controller extends HttpServlet {
 //		msg.add(0,new Date().toString());
 		PrintWriter out = response.getWriter();
 		out.println("<ul>");
-		for(String message : msg){
-			out.println("<li>" + message + "</li>");
+		boolean firstElement=true;
+		for(String message : messages){
+			if(firstElement){
+				out.println("<li style='background-color:red;display:inline'>" + message + "</li>");
+				firstElement=false;
+			}
+			else {
+				out.println("<li>" + message + "</li>");
+			}
 //			response.getWriter().println(message + "<br/>");
 		}
 		out.println("</ul>");
@@ -63,6 +70,6 @@ public class Controller extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.getWriter().println("Ich bin der Server, ich habe einen Request bekommen");
 		Runtime.getRuntime().exec("eject");
-		msg.add(0,req.getParameter("text"));
+		messages.add(0,req.getParameter("text"));
 	}
 }
